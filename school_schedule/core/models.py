@@ -37,9 +37,12 @@ class Schedule(models.Model):
     date = models.DateField()
     start_time = models.TimeField()
     end_time = models.TimeField()
+    day_of_week = models.CharField(max_length=9, default='Monday')
+
 
     def __str__(self):
-        return f"{self.class_group} - {self.subject} ({self.date})"
+        return f"{self.class_group} - {self.subject} ({self.day_of_week})"
+
 
 class Grade(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
